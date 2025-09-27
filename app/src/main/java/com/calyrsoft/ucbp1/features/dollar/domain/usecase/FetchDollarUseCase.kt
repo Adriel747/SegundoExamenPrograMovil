@@ -9,7 +9,7 @@ class FetchDollarUseCase(
     val repository : IDollarRepository
 )
 {
-            suspend fun invoke (): Flow<DollarModel>{
+            operator suspend fun invoke (): Flow<DollarModel>{
                 return repository.getDollar()
             }
 

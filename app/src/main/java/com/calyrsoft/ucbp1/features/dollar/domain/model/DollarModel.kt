@@ -5,7 +5,7 @@ data class DollarModel (
     var dollarParallel: String? = null,
     var dollarParallelBuy: String? = null,
     var dollarParallelSell: String? = null,
-    var fechaActualizacion: String? = null
+    val timestamp: Long = 0L
 
 ){
 }

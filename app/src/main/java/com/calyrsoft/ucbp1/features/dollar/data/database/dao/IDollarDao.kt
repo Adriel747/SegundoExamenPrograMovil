@@ -12,7 +12,7 @@ interface IDollarDao {
     suspend fun getList(): List<DollarEntity>
 
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(dollar: DollarEntity)
 
 
@@ -22,4 +22,7 @@ interface IDollarDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDollars(lists: List<DollarEntity>)
+
+    @Query("SELECT * FROM dollars ORDER BY id DESC")
+    suspend fun getHistory(): List<DollarEntity>
 }

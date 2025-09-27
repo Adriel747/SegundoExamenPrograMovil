@@ -68,6 +68,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
     implementation(libs.androidx.navigation.compose)
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3") // Check for the latest version
+
 
     //local bundle room
     implementation(libs.bundles.local)
