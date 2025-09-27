@@ -1,6 +1,9 @@
 package com.calyrsoft.ucbp1.features.movie.domain.model
 
 data class MovieModel(
-    val pathUrl: String,
-    val title: String
+    val id: Int,
+    val title: String,
+    val overview: String,
+    val posterPath: String,
+    val isLiked: Boolean = false
 )

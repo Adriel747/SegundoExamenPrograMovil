@@ -34,10 +34,11 @@ fun ProfileScreen(
     }
 
     when(val st = state.value) {
-        is ProfileViewModel.ProfileUiState.Error -> Text(st.message)
+        is ProfileViewModel.ProfileUiState.Error -> Text(st.message?.toString() ?: "Error desconocido")
         ProfileViewModel.ProfileUiState.Init -> Text("")
         ProfileViewModel.ProfileUiState.Loading -> CircularProgressIndicator()
         is ProfileViewModel.ProfileUiState.Success -> {
+            val profile = st.profile
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -46,32 +47,32 @@ fun ProfileScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 AsyncImage(
-                    model = st.profile.pathUrl,
-                    contentDescription = "Foto de perfil de ${st.profile.name}",
+                    model = profile.pathUrl.value,
+                    contentDescription = "Foto de perfil de ${profile.name.value}",
                     modifier = Modifier
                         .size(120.dp)
-                        .clip(CircleShape) // Opcional: imagen circular
+                        .clip(CircleShape)
                         .border(2.dp, Color.Gray, CircleShape),
                     contentScale = ContentScale.Crop
                 )
 
                 Text(
-                    text = st.profile.name,
+                    text = profile.name.value,
                     style = MaterialTheme.typography.titleMedium
                 )
 
                 Text(
-                    text = st.profile.email,
+                    text = profile.email.value,
                     style = MaterialTheme.typography.bodyMedium
                 )
 
                 Text(
-                    text = st.profile.cellphone,
+                    text = profile.cellphone.value,
                     style = MaterialTheme.typography.bodyMedium
                 )
 
                 Text(
-                    text = st.profile.summary,
+                    text = profile.summary.value,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 8.dp),
                     textAlign = TextAlign.Center
@@ -79,6 +80,4 @@ fun ProfileScreen(
             }
         }
     }
-
-
 }

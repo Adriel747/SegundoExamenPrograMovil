@@ -1,5 +1,6 @@
 package com.calyrsoft.ucbp1.navigation
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -20,22 +21,11 @@ fun AppNavigation() {
         navController = navController,
         startDestination = Screen.Dollar.route
     ) {
-        composable(Screen.Github.route) {
-            GithubScreen(modifier = Modifier)
-        }
-        composable(Screen.Home.route) {
-
-        }
-        composable(Screen.Profile.route) {
-            ProfileScreen()
-        }
-
+        composable(Screen.Github.route) { GithubScreen() }
+        composable(Screen.Home.route) { /* TODO */ }
+        composable(Screen.Profile.route) { ProfileScreen() }
         composable(Screen.CardExamples.route) { CardScreen() }
-
-        composable(Screen.Dollar.route) {
-            DollarScreen()
-        }
-
+        composable(Screen.Dollar.route) { DollarScreen() }
         composable(Screen.PopularMovies.route) { PopularMoviesScreen() }
     }
 }

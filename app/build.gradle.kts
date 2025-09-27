@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.ksp)
-
 }
 
 android {
@@ -53,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.database)
+    implementation(libs.engage.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,6 +69,9 @@ dependencies {
     implementation(libs.coil.network)
     implementation(libs.androidx.navigation.compose)
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3") // Check for the latest version
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-core:1.0.0")
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
 
 
     //local bundle room
@@ -76,6 +79,9 @@ dependencies {
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.compiler)
     testImplementation(libs.room.testing)
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.0")
+
 
 
 }
