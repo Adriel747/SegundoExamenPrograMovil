@@ -12,20 +12,20 @@ import androidx.compose.ui.Modifier
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun DollarScreen(viewModelDollar: DollarViewModel = koinViewModel()) {
+fun DollarScreen(viewModelDollar: DollarViewModel = koinViewModel()){
     val state = viewModelDollar.uiState.collectAsState()
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        when (val stateValue = state.value) {
+        when (val stateValue = state.value){
             is DollarViewModel.DollarUIState.Error -> Text(stateValue.message)
             DollarViewModel.DollarUIState.Loading -> CircularProgressIndicator()
-            is DollarViewModel.DollarUIState.Success -> {
-                Text(stateValue.data.dollarOfficial!!)
-                Text(stateValue.data.dollarParallel!!)
+            is DollarViewModel.DollarUIState.Success ->{
+                stateValue.data.dollarOfficial?.let { Text(it) }
+                stateValue.data.dollarParallel?.let { Text(it) }
             }
         }
-    }
+}
 }
